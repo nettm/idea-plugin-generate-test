@@ -1,0 +1,43 @@
+<idea-plugin>
+    <id>com.nettm.idea.plugin.idea-plugin-generate-test</id>
+    <name>Generate UnitTest</name>
+    <version>1.0</version>
+    <vendor email="nettm@qq.com" url="http://www.nettm.com">Nettm</vendor>
+
+    <description><![CDATA[
+      基于代码生成单元测试.<br>
+      <em>1. 构建单元测试</em>
+      <em>2. 构建单元测试</em>
+      <em>3. 构建单元测试</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      初始构建.<br>
+      <em>1. 构建工程</em>
+      <em>2. 构建单元测试</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.nettm.idea.plugin.settings.TestSettingsState"/>
+        <applicationConfigurable parentId="tools" instance="com.nettm.idea.plugin.settings.TestSettingsConfigurable"
+                                 id="com.nettm.idea.plugin.settings.TestSettingsConfigurable"
+                                 displayName="Generate UnitTest"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="GenerateUnitTest" class="com.nettm.idea.plugin.action.GenerateUnitTestAction"
+                text="生成单元测试" description="生成单元测试">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
